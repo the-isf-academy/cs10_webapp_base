@@ -17,11 +17,11 @@ class IndexView(TemplateView):
 class CreateAccountView(TemplateView):
     template_name = 'starter_app/createAccountView.html'
 
-class TaskDashboard(TemplateView):
+class TaskDashboardView(TemplateView):
     template_name = 'starter_app/dashboardView.html'
 
-class TaskForm(TemplateView):
+class TaskFormView(TemplateView):
     template_name = 'starter_app/taskFormView.html'
 
-class EditTask(TemplateView):
+class EditTaskView(TemplateView):
     template_name = 'starter_app/updateTaskView.html'
