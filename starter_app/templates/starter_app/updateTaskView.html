@@ -2,20 +2,23 @@
 
 {% block content %}
 
-<div>
-    <h4>Update Task</h4>
-
-    <div id="form-container">
-        <form method="post">
-            {% csrf_token %}
-            <label for="title">Task:</label><br>
-            <input type="text" id="title" name="title"><br>
-            <br>
-            <label for="due-date">Due Date:</label><br>
-            <input type="date" id="due-date" name="due-date"><br>
-            <br>
-            <button type="submit">Save</button>
-        </form>
+<div class ="d-flex justify-content-center">
+    <div>
+        <h4>Update Task</h4>
+        <div id="form-container">
+            <div class="container" id="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="title">Task:</label><br>
+                    <input type="text" id="title" name="title"><br>
+                    <br>
+                    <label for="due-date">Due Date:</label><br>
+                    <input type="date" id="due-date" name="due-date"><br>
+                    <br>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
