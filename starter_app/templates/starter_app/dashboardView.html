@@ -2,13 +2,13 @@
 
 
 {% block content %}
-<div>
+<div class="container" style="width:75%; margin-bottom: 50px">
     <h4>Tasks</h4>
 
-  <ul>
-      <li> <a href="{% url 'update-task' pk=1 %}">Task 1 </a></li>
-      <li> <a href="{% url 'update-task' pk=2 %}">Task 2</a></li>
-      <li> <a href="{% url 'update-task' pk=3 %}">Task 3</a></li>
+  <ul class="list-group">
+      {% include 'starter_app/taskItem.html' %}
+      {% include 'starter_app/taskItem.html' %}
+      {% include 'starter_app/taskItem.html' %}
   </ul>
 </div>
 
