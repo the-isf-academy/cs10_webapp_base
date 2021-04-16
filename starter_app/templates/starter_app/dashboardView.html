@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" type ="text/css" href="{% static 'starter_app/custom.css' %}">
+{% endblock %}
 
 
 {% block content %}
@@ -11,11 +17,13 @@
         <h5 class="mb-1">Task</h5>
         <p><strong>Date Due:</strong> Date holder</p>
       </div>
-      <p><i>Label</i></p>
+      <p class="badge badge-info">Label</p>
 
       <p>Notes: notes holder</p>
       <a href="{% url 'update-task' pk=1 %}">
-        Update
+        <button type="button" class="btn btn-outline-secondary btn-sm">
+          Update
+        </button>
       </a>
     </li>
     <li class="list-group-item">
@@ -23,11 +31,13 @@
         <h5 class="mb-1">Task 2</h5>
         <p><strong>Date Due:</strong> Date holder</p>
       </div>
-      <p><i>Label</i></p>
+      <p class="badge badge-info">Label</p>
 
       <p>Notes: notes holder</p>
       <a href="{% url 'update-task' pk=2 %}">
-        Update
+        <button type="button" class="btn btn-outline-secondary btn-sm">
+          Update
+        </button>
       </a>
     </li>
     <li class="list-group-item">
@@ -35,11 +45,13 @@
         <h5 class="mb-1">Task 3</h5>
         <p><strong>Date Due:</strong> Date holder</p>
       </div>
-      <p><i>Label</i></p>
+      <p class="badge badge-info">Label</p>
 
       <p>Notes: notes holder</p>
       <a href="{% url 'update-task' pk=3 %}">
-        Update
+        <button type="button" class="btn btn-outline-secondary btn-sm">
+          Update
+        </button>
       </a>
     </li>
   </ul>

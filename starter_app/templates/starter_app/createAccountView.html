@@ -3,8 +3,9 @@
 
 {% block content %}
   <div class="d-flex justify-content-center">
-    <div>
-        <h4>Sign up for an account!</h4>
+    <div class="card">
+        <div class="card-body">
+        <h4 class="card-title">Sign up for an account!</h4>
         <form method="post" >
             {% csrf_token %}
             <label for="username">Username:</label><br>
@@ -16,8 +17,9 @@
             <label for="password-retype">Retype Password:</label><br>
             <input type="text" id="password-retype" name="password-retype"><br>
             <br>
-            <button type="submit">Save</button>
+            <button type="submit" class="btn btn-dark">Save</button>
         </form>
+        </div>
     </div>
   </div>
 {% endblock %}
