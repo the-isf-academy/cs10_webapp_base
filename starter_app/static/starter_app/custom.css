@@ -1,3 +1,11 @@
 .badge-info {
     background-color: #81BE11;
 }
+
+.due-soon {
+    background-color: #FFFF9C;
+}
+
+#due-next {
+    background-color: #FFBA8C;
+}
