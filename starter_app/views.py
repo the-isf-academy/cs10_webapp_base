@@ -17,8 +17,21 @@ class IndexView(TemplateView):
 class CreateAccountView(TemplateView):
     template_name = 'starter_app/createAccountView.html'
 
-class TaskDashboardView(TemplateView):
+class TaskDashboardView(ListView):
     template_name = 'starter_app/dashboardView.html'
+    model = Task
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # filter out archieved tasks
+        data = self.model.objects.all().filter(archive=False)
+
+        # filter tasks for user
+        tasks = data.filter(task_assigned_to=self.request.user.username)
+        context['user_tasks'] = tasks.distinct().order_by('-due_date')
+
+        return context
 
 class TaskFormView(TemplateView):
     template_name = 'starter_app/taskFormView.html'

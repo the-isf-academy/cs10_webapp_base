@@ -12,48 +12,9 @@
     <h4>Tasks</h4>
 
   <ul class="list-group">
-    <li class="list-group-item">
-      <div class="d-flex w-100 justify-content-between">
-        <h5>Task</h5>
-        <p class="due-soon"><strong>Date Due:</strong> Date holder</p>
-      </div>
-      <p class="badge badge-info">Label</p>
-
-      <p>Notes: notes holder</p>
-      <a href="{% url 'update-task' pk=1 %}">
-        <button type="button" class="btn btn-outline-secondary btn-sm">
-          Update
-        </button>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="">Task 2</h5>
-        <p id="due-next"><strong>Date Due:</strong> Date holder</p>
-      </div>
-      <p class="badge badge-info">Label</p>
-
-      <p>Notes: notes holder</p>
-      <a href="{% url 'update-task' pk=2 %}">
-        <button type="button" class="btn btn-outline-secondary btn-sm">
-          Update
-        </button>
-      </a>
-    </li>
-    <li class="list-group-item">
-      <div class="d-flex w-100 justify-content-between">
-        <h5>Task 3</h5>
-        <p class="due-soon"><strong>Date Due:</strong> Date holder</p>
-      </div>
-      <p class="badge badge-info">Label</p>
-
-      <p>Notes: notes holder</p>
-      <a href="{% url 'update-task' pk=3 %}">
-        <button type="button" class="btn btn-outline-secondary btn-sm">
-          Update
-        </button>
-      </a>
-    </li>
+      {% for task in user_tasks %}
+          {% include 'starter_app/taskItem.html' %}
+    {% endfor %}
   </ul>
 </div>
 

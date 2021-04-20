@@ -1,0 +1,14 @@
+<li class="list-group-item">
+  <div class="d-flex w-100 justify-content-between">
+      <h5>{{ task }}</h5>
+      <p class="due-soon"><strong>Date Due:</strong> {{ task.due_date }}</p>
+  </div>
+  <p class="badge badge-info">{{ task.label }}</p>
+
+  <p>Notes: {{ task.notes }}</p>
+  <a href="{% url 'update-task' pk=task.id %}">
+    <button type="button" class="btn btn-outline-secondary btn-sm">
+      Update
+    </button>
+  </a>
+</li>
