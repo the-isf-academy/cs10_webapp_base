@@ -17,7 +17,7 @@ class IndexView(TemplateView):
 class CreateAccountView(TemplateView):
     template_name = 'starter_app/createAccountView.html'
 
-class TaskDashboardView(ListView):
+class TaskDashboardView(LoginRequiredMixin, ListView):
     template_name = 'starter_app/dashboardView.html'
     model = Task
 
@@ -33,8 +33,8 @@ class TaskDashboardView(ListView):
 
         return context
 
-class TaskFormView(TemplateView):
+class TaskFormView(LoginRequiredMixin, TemplateView):
     template_name = 'starter_app/taskFormView.html'
 
-class EditTaskView(TemplateView):
+class EditTaskView(LoginRequiredMixin, TemplateView):
     template_name = 'starter_app/updateTaskView.html'
