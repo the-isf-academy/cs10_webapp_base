@@ -12,8 +12,25 @@
     <h4>Tasks</h4>
 
   <ul class="list-group">
-      {% for task in user_tasks %}
-          {% include 'starter_app/taskItem.html' %}
+    {% for task in user_tasks %}
+        <li class="list-group-item">
+          <div class="d-flex w-100 justify-content-between">
+              <h5>{{ task.title }}</h5>
+              {% if forloop.first %}
+                <p id="due-next"><strong>Date Due:</strong> {{ task.due_date }}</p>
+              {% else %}
+                <p><strong>Date Due:</strong> {{ task.due_date }}</p>
+              {% endif %}
+          </div>
+          <p class="badge badge-info">{{ task.label }}</p>
+
+          <p>Notes: {{ task.notes }}</p>
+          <a href="{% url 'update-task' pk=task.id %}">
+            <button type="button" class="btn btn-outline-secondary btn-sm">
+              Update
+            </button>
+          </a>
+        </li>
     {% endfor %}
   </ul>
 </div>

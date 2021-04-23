@@ -33,8 +33,8 @@ class TaskDashboardView(LoginRequiredMixin, ListView):
 
         return context
 
-class TaskFormView(LoginRequiredMixin, TemplateView):
+class TaskFormView(LoginRequiredMixin,TemplateView):
     template_name = 'starter_app/taskFormView.html'
 
-class EditTaskView(LoginRequiredMixin, TemplateView):
+class EditTaskView(LoginRequiredMixin,TemplateView):
     template_name = 'starter_app/updateTaskView.html'
