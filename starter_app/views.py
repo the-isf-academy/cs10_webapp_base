@@ -14,8 +14,22 @@ from django.contrib.auth import login, authenticate
 class IndexView(TemplateView):
     template_name = 'starter_app/indexView.html'
 
-class CreateAccountView(TemplateView):
+class CreateAccountView(FormView):
     template_name = 'starter_app/createAccountView.html'
+    form_class = CreateAccountForm
+
+    success_url = '/dashboard'
+
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        form.save()
+        username = form.cleaned_data.get('username')
+        raw_password = form.cleaned_data.get('password1')
+        user = authenticate(username=username, password=raw_password)
+        login(self.request, user)
+        return super().form_valid(form)
 
 class TaskDashboardView(LoginRequiredMixin, ListView):
     template_name = 'starter_app/dashboardView.html'
@@ -33,8 +47,32 @@ class TaskDashboardView(LoginRequiredMixin, ListView):
 
         return context
 
-class TaskFormView(LoginRequiredMixin,TemplateView):
+class TaskFormView(LoginRequiredMixin,FormView):
     template_name = 'starter_app/taskFormView.html'
+    form_class = TaskForm
+    success_url = '/dashboard'
 
-class EditTaskView(LoginRequiredMixin,TemplateView):
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+
+        if form.instance.task_assigned_to == "":
+            form.instance.task_assigned_to = self.request.user.username
+
+        form.instance.task_user = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+class EditTaskView(UpdateView):
+    model = Task
     template_name = 'starter_app/updateTaskView.html'
+    success_url = '/dashboard'
+
+    fields = [
+        "title",
+        "label",
+        "notes",
+        "archive",
+        "due_date"
+    ]
